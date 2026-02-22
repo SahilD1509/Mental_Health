@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import "./App.css";
 
 const SYMPTOMS_DB = [
@@ -383,7 +383,6 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState([]);
   const [results, setResults] = useState(null);
-  const [step, setStep] = useState("select"); // select | results
   const [animateIn, setAnimateIn] = useState(false);
   const resultsRef = useRef(null);
 
@@ -418,7 +417,6 @@ export default function App() {
       .slice(0, 4);
 
     setResults(scored);
-    setStep("results");
     setAnimateIn(false);
     setTimeout(() => setAnimateIn(true), 50);
     setTimeout(() => {
@@ -429,7 +427,6 @@ export default function App() {
   function reset() {
     setSelected([]);
     setResults(null);
-    setStep("select");
     setQuery("");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
